@@ -12,7 +12,7 @@ struct Person {
 
 // t1更早就为true
 bool time_cmp(string& t1, string& t2) {
-    for(auto it1 = t1.cbegin(), it2 = t2.cbegin();it1 != t1.cend();it1++, it2++) {
+    for(auto it1 = t1.cbegin(), it2 = t2.cbegin(); it1 != t1.cend(); it1++, it2++) {
         if(*it1 < *it2) {
             return true;
         }
@@ -24,18 +24,15 @@ bool time_cmp(string& t1, string& t2) {
 }
 
 int main() {
-    int M, m;
+    int M;
     cin >> M;
-    m = M;
     auto persons = new Person[M];
-
-
+    int m = M;
     while(M--) {
         cin >> persons[M].id;
         cin >> persons[M].sign_in_time;
         cin >> persons[M].sign_out_time;
     }
-
     int first = 0;
     int last = 0;
     for(int i = 1; i < m; i++) {
