@@ -93,8 +93,10 @@ int main() {
 
     long long min_radix = get_radix(N2, alpha);
     // trap
-    long long max_radix = max(min_radix                                                                                                                                                                                     , num) + 1;
-    long long ret = binary_search(N2, min_radix, 36ll, num, alpha);
+    long long max_radix = max(min_radix, num);
+//    cout << "min radix " << min_radix << endl;
+//    cout << "max radix " << max_radix << endl;
+    long long ret = binary_search(N2, min_radix, max_radix, num, alpha);
     if(ret != -1) {
         cout << ret << endl;
     }
