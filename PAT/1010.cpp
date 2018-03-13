@@ -3,9 +3,18 @@
 #include<map>
 #include<algorithm>
 
-using namespace std;
+// 注意几点：
+// 1. 一定都要用Long long int，不然会错很多case;
 
-// Some answers are wrong.
+// 2. 注意计算radix的值时，有可能会发生溢出，得到的result结果为负数，此时应该减少radix的值;
+
+// 3. 不能使用简单的顺序搜索算法，应该使用二分法搜索；
+
+// 除了只有一位数时候可能出现多个解，其余情况均只有一个解。
+
+// 二分法搜索能够保证得到的结果唯一并且正确。
+
+using namespace std;
 
 void init_map(map<char, long long>& alpha) {
     long long i = 0;
@@ -66,7 +75,6 @@ long long binary_search(string& num, long long left, long long right, long long 
     return -1;
 }
 
-
 int main() {
     string N1;
     string N2;
@@ -83,19 +91,18 @@ int main() {
 
     long long num = convert_to_decimal(N1, radix, alpha);
     long long num2 = convert_to_decimal(N2, radix, alpha);
-    if(num == 1 && num2 == 1) {
-        cout << "2" << endl;
-        return 0;
-    } else if(num == num2) {
+    // may be overflow
+    if(N1 == N2) {
         cout << radix << endl;
         return 0;
     }
-
+    if(num == 1 && num2 == 1) {
+        cout << "2" << endl;
+        return 0;
+    }
     long long min_radix = get_radix(N2, alpha);
     // trap
-    long long max_radix = max(min_radix, num);
-//    cout << "min radix " << min_radix << endl;
-//    cout << "max radix " << max_radix << endl;
+    long long max_radix = max(min_radix, num) + 1;
     long long ret = binary_search(N2, min_radix, max_radix, num, alpha);
     if(ret != -1) {
         cout << ret << endl;
