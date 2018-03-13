@@ -29,7 +29,6 @@ int main() {
     cin >> x.second;
   }
 
-  // 最大指数
   int maxN = poly1[0].first + poly2[0].first;
   vector<pair<int, double>> poly3(maxN+1);
   for(auto &x: poly1) {
