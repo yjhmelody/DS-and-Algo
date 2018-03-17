@@ -29,7 +29,6 @@ void init_cards(array<string, n>& cards) {
             cards.at(j).append(to_string(k));
         }
     }
-
     cards.at(52).append("J1");
     cards.at(53).append("J2");
 }
