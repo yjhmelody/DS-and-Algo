@@ -35,7 +35,6 @@ int main() {
     int M;
     cin >> M;
     int count = 0;
-//    vector<pair<string, string>> accounts(M);
     vector<tuple<string, string, bool>> accounts(M);
     vector<bool> modified(M);
     for(auto &x: accounts) {
