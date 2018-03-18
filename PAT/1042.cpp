@@ -50,9 +50,9 @@ int main() {
         swap(temp, cards);
     }
 
-    for(int i = 0; i < 53; i++) {
+    for(int i = 0; i < cards.size()-1; i++) {
         cout << cards.at(i) << " ";
     }
-    cout << cards.at(53) << endl;
+    cout << cards.at(cards.size()-1) << endl;
     return 0;
 }
