@@ -2,7 +2,6 @@
 #include<vector>
 #include<algorithm>
 #include<string>
-#include<sstream>
 
 using namespace std;
 
@@ -38,9 +37,7 @@ rational cal(rational& a, rational& b, char flag) {
         numerator = a.numerator * b.denomerator;
     }
     rational rat = {numerator, denomerator};
-//    cout << "test:" << rat.numerator <<"/" << rat.denomerator << endl;
     transform(rat);
-//    cout << "test:" << rat.numerator <<"/" << rat.denomerator << endl;
     return rat;
 }
 
@@ -61,16 +58,20 @@ void transform(rational& rat) {
 
 void print(rational& rat){
     transform(rat);
-    if(rat.numerator < 0)
+
+    if(rat.numerator < 0) {
         cout << "(";
-    if(rat.denomerator == 1)
+    }
+
+    if(rat.denomerator == 1) {
         cout << rat.numerator;
+    }
     else if(abs(rat.numerator) > rat.denomerator) {
         cout << rat.numerator / rat.denomerator << " " << abs(rat.numerator) % rat.denomerator << "/" << rat.denomerator;
-
     }
-    else
+    else {
         cout << rat.numerator << "/" << rat.denomerator;
+    }
 
     if(rat.numerator < 0)
         cout << ")";
@@ -98,7 +99,7 @@ int main() {
         cout << " = ";
         auto ans = cal(rats[0], rats[1], op);
         if(op == '/' && rats[1].numerator == 0) {
-            cout << "Inf\n";
+            cout << "Inf" << endl;
             continue;
         }
         print(ans);
