@@ -6,7 +6,10 @@
 
 using namespace std;
 
-// 去掉的点的临近点中只有一条边的个数
+//添加的最少的路线，就是他们的连通分量数-1，
+//因为当a个互相分立的连通分量需要变为连通图的时候，
+//只需要添加a-1个路线，就能让他们相连。
+//所以这道题就是求去除了某个结点之后其他的图所拥有的连通分量数
 
 // node is from 0 to n-1
 void dfs(int node, vector<vector<bool>>& edges, vector<bool>& visit) {
@@ -38,12 +41,6 @@ int main() {
         highways.at(from-1).at(to-1) = highways.at(to-1).at(from-1) = true;
     }
 
-//    for(auto highway: highways) {
-//        for(auto x: highway) {
-//            cout << x << endl;
-//        }
-//    }
-
     for(int i = 0; i < K; i++) {
         // init
         fill(visit.begin(), visit.end(), false);
@@ -55,7 +52,6 @@ int main() {
         visit[city-1] = true;
         for(int j = 0; j < N; j++) {
             if(visit[j] == false) {
-
                 dfs(j, highways, visit);
                 count++;
             }
