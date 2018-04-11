@@ -1,8 +1,6 @@
 #include<iostream>
 #include<vector>
-#include<queue>
 #include<cstdio>
-#include<set>
 #include<algorithm>
 
 using namespace std;
@@ -13,11 +11,6 @@ struct custom {
     int second;
     // min
     int wait_time;
-};
-
-struct window {
-    int avg;
-    queue<int> q;
 };
 
 int get_time(custom &c1) {
