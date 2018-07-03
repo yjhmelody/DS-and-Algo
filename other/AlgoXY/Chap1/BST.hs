@@ -85,7 +85,8 @@ fromList = foldl insert Empty
 
 -- Node (Node Empty 1 Empty) 2 (Node Empty 3 Empty)
 
--- test
+
+-- test code
 prop_build :: (Show a, Ord a) => [a] -> Bool
 prop_build xs = L.sort xs == (toList $ fromList xs)
 
@@ -114,8 +115,8 @@ prop_mapR xs a b = filter (\x-> a<= x && x <=b) (L.sort xs) ==
 testAll = do
     quickCheck (prop_build :: [Int] -> Bool)
     quickCheck (prop_map :: [Int] -> Bool)
-    quickCheck (prop_lookup:: [Int] -> Int -> Bool)
-    quickCheck (prop_min:: [Int] -> Property)
-    quickCheck (prop_max:: [Int] -> Property)
-    quickCheck (prop_del:: [Int] -> Int -> Bool)
-    quickCheck (prop_mapR:: [Int] -> Int -> Int -> Bool)
+    quickCheck (prop_lookup :: [Int] -> Int -> Bool)
+    quickCheck (prop_min :: [Int] -> Property)
+    quickCheck (prop_max :: [Int] -> Property)
+    quickCheck (prop_del :: [Int] -> Int -> Bool)
+    quickCheck (prop_mapR :: [Int] -> Int -> Int -> Bool)
