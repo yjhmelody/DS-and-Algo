@@ -19,12 +19,12 @@ int main() {
     int C2; // end point
     cin >> N >> M >> C1 >> C2;
 
-    vector<int> dis(N, INT_MAX); // ´Ó³ö·¢µãµ½i½áµã×î¶ÌÂ·¾¶µÄÂ·¾¶³¤¶È
-    vector<int> road_num(N); // ´Ó³ö·¢µãµ½i½áµã×î¶ÌÂ·¾¶µÄÌõÊı
-    vector<int> team_num(N); // ´Ó³ö·¢µãµ½iµã¾ÈÔ®¶ÓµÄÊıÄ¿Ö®ºÍ
+    vector<int> dis(N, INT_MAX); // ä»å‡ºå‘ç‚¹åˆ°iç»“ç‚¹æœ€çŸ­è·¯å¾„çš„è·¯å¾„é•¿åº¦
+    vector<int> road_num(N); // ä»å‡ºå‘ç‚¹åˆ°iç»“ç‚¹æœ€çŸ­è·¯å¾„çš„æ¡æ•°
+    vector<int> team_num(N); // ä»å‡ºå‘ç‚¹åˆ°iç‚¹æ•‘æ´é˜Ÿçš„æ•°ç›®ä¹‹å’Œ
     vector<bool> visited(N, false);
 
-    // µãºÍ±ß¶¼´øÈ¨ÖØµÄÁÚ½Ó±í
+    // ç‚¹å’Œè¾¹éƒ½å¸¦æƒé‡çš„é‚»æ¥è¡¨
     vector<pair<int, vector<line>>> cities(N);
     // cin
     for(auto &x: cities) {
@@ -46,7 +46,7 @@ int main() {
     for(int i = 0; i < N; i++) {
         int u = -1;
         int min = INT_MAX;
-        // ´Ó¾àÀë×î½üµÄÁÙµã¿ªÊ¼
+        // ä»è·ç¦»æœ€è¿‘çš„ä¸´ç‚¹å¼€å§‹
         for(int j = 0; j < N; j++) {
             if(visited[j] == false && dis[j] < min) {
                 u = j;
@@ -57,7 +57,7 @@ int main() {
             break;
         }
         visited[u] = true;
-        // ´Óu¿ªÊ¼³ö·¢
+        // ä»uå¼€å§‹å‡ºå‘
         for(auto &x: cities[u].second) {
             int &v = x.c2;
             if(visited[v] == false) {
@@ -69,7 +69,7 @@ int main() {
                 }
                 else if(dis[u] + x.len == dis[v]) {
                     road_num[v] = road_num[u] + road_num[v];
-                    // Èç¹û¾ÈÔ®¶Ó¸öÊı±ä¶à
+                    // å¦‚æœæ•‘æ´é˜Ÿä¸ªæ•°å˜å¤š
                     int temp = team_num[u] + cities[v].first;
                     if(temp > team_num[v]) {
                         team_num[v] = temp;

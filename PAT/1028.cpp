@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// 这道题卡C++的时间，得用C
+// 杩欓亾棰樺崱C++鐨勬椂闂达紝寰楃敤C
 struct Student {
     int id;
     char name[10];
