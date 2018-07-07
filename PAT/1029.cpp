@@ -45,6 +45,6 @@ int main() {
             b.pop();
         };
     }
-    printf("%d", min(a.front(), b.front()));
+    printf("%d\n", min(a.front(), b.front()));
     return 0;
 }
